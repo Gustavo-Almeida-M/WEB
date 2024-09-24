@@ -18,7 +18,7 @@ const Home = () => {
           paddingLeft: "50px",
           marginLeft: "320px",
           marginRight: "320px",
-          height: "93.4%",
+          height: "91.4%",
         }}
       >
         <div className="testo">

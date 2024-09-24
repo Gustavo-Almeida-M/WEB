@@ -98,7 +98,7 @@ const Generations = () => {
           marginLeft: "320px",
           marginRight: "320px",
           overflow: "auto",
-          height: "93.4%",
+          height: "91.4%",
         }}
       >
         <img
