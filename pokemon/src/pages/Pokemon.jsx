@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "../css/App.css";
-import { Link } from "react-router-dom";
+import Header from "../components/Header";
 import pokemonImage from "../assets/International_Pokémon_logo.svg.png";
 import PokemonCard from "../Card/PokemonCard";
 import axios from "axios";
@@ -90,55 +90,8 @@ const Pokemon = () => {
 
   return (
     <div className="background-container" style={{ overflowY: "auto" }}>
-      <nav
-        className="navbar navbar-expand-xxl bg-body-tertiary"
-        style={{ backgroundColor: "#222", margin: "0 320px", padding: "10px" }}
-        data-bs-theme="dark"
-      >
-        <div
-          className="container-fluid position-relative"
-          style={{ maxWidth: "1200px", padding: "0 40px" }}
-        >
-          <a aria-current="page" href="http://localhost:3000">
-            <img src={pokemonImage} alt="Pokémon" width="112" height="41" />
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <Link className="nav-link fs-5" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link fs-5" to="/pokemons">
-                  Pokémons
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link fs-5" to="/geracoes">
-                  Gerações
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link fs-5" to="/pokedex">
-                  Pokédex
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+
+      <Header />
 
       <div
         className="text-center"
