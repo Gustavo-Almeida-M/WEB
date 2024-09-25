@@ -6,23 +6,47 @@ import styled from "styled-components";
 
 const MyPokedex = () => {
     const [elements, setElements] = useState([]);
+    const [inputValue, setInputValue] = useState('');
 
     const addElement = () => {
-        setElements([...elements, { col1: 'Novo Elemento 1', col2: 'Novo Elemento 2' }]);
+        if (inputValue.trim() !== '') {
+            const newElement = {
+                id: Date.now(),
+                col1: inputValue,
+            };
+            setElements([...elements, newElement]);
+            setInputValue('');
+        }
     };
-    const Button = styled.button`
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    background-color: #007bff;
+
+    const removeElement = (id) => {
+        setElements(elements.filter(element => element.id !== id));
+    };
+    const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #ddd;
+  }
+
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  
-    &:hover {
-      background-color: #0056b3;
-    }
-  `;
+  }
+`;
     return (
         <div className="background-container"
             style={{
@@ -52,7 +76,26 @@ const MyPokedex = () => {
                 >
                     Minha Pokédex
                 </h2>
-                <Button onClick={addElement}>Adicionar Elemento</Button>
+                <div className="input-group mb-3 w-75 mx-auto">
+                    <input type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder="Nome Pokédex" className="form-control" aria-label="Nome Pokédex" aria-describedby="button-addon2"/>
+                        <button onClick={addElement} className="btn btn-outline-secondary" type="button" id="button-addon2">Criar</button>
+                        <button onClick={(e) => setInputValue('')} className="btn btn-outline-secondary" type="button">Cancelar</button> 
+                </div>
+                <Table>
+                    <tbody>
+                        {elements.map((element, index) => (
+                            <tr key={index}>
+                                <td>{element.col1}</td>
+                                <td>
+                                    <button onClick={() => removeElement(element.id)} className="btn btn-danger">Remover</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
             </div>
         </div>
 
